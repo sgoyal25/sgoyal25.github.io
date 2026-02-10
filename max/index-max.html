@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shuchi Goyal | Statistician</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shuchi Goyal — Statistician and Data Scientist">
+  <meta name="author" content="Shuchi Goyal">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="images/sg.png" rel="shortcut icon" type="image/x-icon"/>
+
+  <style>
+    :root {
+      --bg: #1a0a12;
+      --bg-surface: #241420;
+      --bg-raised: #2e1a28;
+      --gold: #c48a2e;
+      --gold-light: #d4a54a;
+      --gold-dim: rgba(196, 138, 46, 0.07);
+      --rani: #c4305a;
+      --teal: #2a9d9d;
+      --text: #e8ddd0;
+      --text-muted: #a89888;
+      --text-dim: #6b5b50;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 15px;
+      line-height: 1.78;
+      color: var(--text);
+      background-color: var(--bg);
+    }
+
+    ::selection {
+      background-color: var(--gold);
+      color: var(--bg);
+    }
+
+    /* ——— Scrollbar ——— */
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--gold-light); }
+
+    /* ——— Noise Overlay ——— */
+
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.030;
+    }
+
+    /* ——— Paisley Decoration ——— */
+
+    .paisley-deco {
+      position: absolute;
+      color: var(--gold);
+      opacity: 0.045;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .paisley-hero-1 {
+      width: 360px;
+      height: 560px;
+      top: -40px;
+      right: -40px;
+      transform: rotate(-15deg);
+    }
+
+    .paisley-hero-2 {
+      width: 200px;
+      height: 310px;
+      bottom: 80px;
+      left: -30px;
+      transform: rotate(25deg) scaleX(-1);
+      opacity: 0.03;
+    }
+
+    .paisley-mid {
+      width: 280px;
+      height: 440px;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%) rotate(10deg);
+      opacity: 0.03;
+    }
+
+    .paisley-footer {
+      width: 180px;
+      height: 280px;
+      left: -20px;
+      bottom: -20px;
+      transform: rotate(-20deg) scaleX(-1);
+      opacity: 0.04;
+    }
+
+    /* ——— Hero ——— */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 25% 15%, rgba(140, 28, 62, 0.25) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 85%, rgba(196, 138, 46, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 50%, rgba(36, 20, 32, 0.8) 0%, transparent 80%),
+        var(--bg);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 24px;
+    }
+
+    .hero-name {
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 88px;
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1.05;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .hero-name .period {
+      color: var(--rani);
+    }
+
+    .hero-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+    }
+
+    .hero-subtitle .dot {
+      color: var(--gold);
+      margin: 0 8px;
+    }
+
+    .hero-nav {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .hero-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .hero-nav a:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .hero-nav .sep {
+      color: var(--gold-dim);
+      color: rgba(196, 138, 46, 0.3);
+      margin: 0 14px;
+      user-select: none;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    .scroll-hint svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--gold);
+      opacity: 0.4;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ——— Content Sections ——— */
+
+    .content-section {
+      position: relative;
+      padding: 100px 24px;
+      overflow: hidden;
+    }
+
+    .content-section:nth-child(even) {
+      background:
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-surface) 15%, var(--bg-surface) 85%, var(--bg) 100%);
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* ——— Section Headers ——— */
+
+    .section-header {
+      margin-bottom: 56px;
+      position: relative;
+    }
+
+    .section-num {
+      font-family: 'Yeseva One', Georgia, serif;
+      font-size: 140px;
+      line-height: 1;
+      color: var(--gold-dim);
+      position: absolute;
+      top: -55px;
+      left: -10px;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 36px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 2px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ornament {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .ornament-line {
+      height: 1px;
+      width: 50px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .ornament-line.right {
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .ornament-diamond {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ——— About ——— */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+      padding: 8px;
+    }
+
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--gold);
+      opacity: 0.6;
+    }
+
+    .about-photo-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1px solid var(--gold);
+      opacity: 0.25;
+    }
+
+    .about-photo-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .photo-caption {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      color: var(--text-dim);
+      text-align: center;
+      margin-top: 16px;
+      font-style: italic;
+      letter-spacing: 0.3px;
+    }
+
+    .about-text p {
+      margin-bottom: 18px;
+    }
+
+    .about-text .greeting {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .about-text a {
+      color: var(--rani);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--rani);
+      transition: border-bottom-style 0.2s ease, color 0.2s ease;
+    }
+
+    .about-text a:hover {
+      border-bottom-style: solid;
+      color: var(--gold-light);
+    }
+
+    .about-text strong {
+      color: var(--text);
+    }
+
+    .aside-block {
+      border-left: 3px solid var(--gold);
+      padding: 16px 0 16px 24px;
+      margin: 36px 0;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .contact-block {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 32px;
+    }
+
+    .contact-block a {
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-block a:hover {
+      border-bottom-color: var(--gold);
+    }
+
+    .contact-block .sep {
+      color: var(--rani);
+      margin: 0 10px;
+    }
+
+    /* ——— Research ——— */
+
+    .research-item {
+      margin-bottom: 40px;
+      padding-left: 24px;
+      border-left: 2px solid var(--bg-raised);
+      transition: border-color 0.3s ease;
+    }
+
+    .research-item:hover {
+      border-left-color: var(--gold);
+    }
+
+    .research-item h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .research-item ul {
+      padding-left: 18px;
+      color: var(--text-muted);
+    }
+
+    .research-item li {
+      margin-bottom: 6px;
+    }
+
+    .research-item a {
+      color: var(--rani);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--rani);
+      transition: border-bottom-style 0.2s ease;
+    }
+
+    .research-item a:hover {
+      border-bottom-style: solid;
+    }
+
+    .research-figure {
+      margin-top: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .research-figure img {
+      width: 140px;
+      flex-shrink: 0;
+      border: 1px solid rgba(196, 138, 46, 0.2);
+    }
+
+    .figure-caption {
+      font-size: 12px;
+      font-style: italic;
+      color: var(--text-dim);
+    }
+
+    /* ——— Papers ——— */
+
+    .paper {
+      margin-bottom: 24px;
+      padding-left: 28px;
+      text-indent: -28px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    .paper .me {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .paper em {
+      color: var(--text-muted);
+    }
+
+    .paper a {
+      color: var(--rani);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--rani);
+      transition: border-bottom-style 0.2s ease;
+    }
+
+    .paper a:hover {
+      border-bottom-style: solid;
+    }
+
+    /* ——— Teaching ——— */
+
+    .teaching-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      margin-top: 40px;
+    }
+
+    .teaching-role:first-child {
+      margin-top: 0;
+    }
+
+    .teaching-item {
+      margin-bottom: 20px;
+      padding-left: 24px;
+      border-left: 1px solid var(--bg-raised);
+    }
+
+    .teaching-item .course {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .teaching-item .topics {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-top: 4px;
+      line-height: 1.6;
+    }
+
+    .resources-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 14px;
+      color: var(--rani);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--rani);
+      transition: border-bottom-style 0.2s ease;
+    }
+
+    .resources-link:hover {
+      border-bottom-style: solid;
+    }
+
+    /* ——— Footer ——— */
+
+    footer {
+      position: relative;
+      overflow: hidden;
+      padding: 48px 24px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(196, 138, 46, 0.06) 0%, transparent 60%),
+        var(--bg);
+    }
+
+    .footer-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .footer-ornament .ornament-line {
+      width: 80px;
+      background: var(--gold);
+      opacity: 0.3;
+    }
+
+    .footer-content {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+    }
+
+    .footer-icons {
+      margin-top: 20px;
+    }
+
+    .footer-icons a {
+      display: inline-block;
+      margin: 0 10px;
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-icons a:hover {
+      color: var(--rani);
+    }
+
+    .footer-icons .icon {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+      fill: currentColor;
+    }
+
+    /* ——— Scroll Animations ——— */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ——— Hero Entrance ——— */
+
+    .hero-enter {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: heroIn 0.8s ease forwards;
+    }
+
+    .hero-enter-delay-1 { animation-delay: 0.2s; }
+    .hero-enter-delay-2 { animation-delay: 0.5s; }
+    .hero-enter-delay-3 { animation-delay: 0.8s; }
+
+    @keyframes heroIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ——— Responsive ——— */
+
+    @media (max-width: 768px) {
+      .hero-name {
+        font-size: 52px;
+      }
+
+      .hero-subtitle {
+        font-size: 10px;
+        letter-spacing: 3px;
+      }
+
+      .hero-nav {
+        font-size: 10px;
+        letter-spacing: 2px;
+      }
+
+      .hero-nav .sep {
+        margin: 0 8px;
+      }
+
+      .content-section {
+        padding: 72px 20px;
+      }
+
+      .section-num {
+        font-size: 90px;
+        top: -35px;
+      }
+
+      .section-header h2 {
+        font-size: 28px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .about-photo-wrap {
+        max-width: 220px;
+        margin: 0 auto;
+      }
+
+      .research-figure {
+        flex-direction: column;
+      }
+
+      .research-figure img {
+        width: 100%;
+        max-width: 200px;
+      }
+
+      .contact-block .sep {
+        display: none;
+      }
+
+      .contact-block .mobile-break {
+        display: block;
+      }
+
+      .paisley-hero-1 {
+        width: 200px;
+        height: 310px;
+        right: -50px;
+        top: -20px;
+      }
+
+      .paisley-hero-2 {
+        display: none;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .contact-block .mobile-break {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-name {
+        font-size: 40px;
+      }
+
+      .hero-nav .sep {
+        margin: 0 5px;
+      }
+
+      .section-num {
+        font-size: 70px;
+        top: -25px;
+      }
+    }
+
+    /* ——— Print ——— */
+
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 40px 0;
+        background: none;
+      }
+
+      .hero-name { color: #111; }
+      .noise-overlay,
+      .paisley-deco,
+      .scroll-hint { display: none; }
+
+      .content-section { padding: 30px 0; background: none; }
+      .section-header h2 { color: #111; }
+      .section-num { display: none; }
+
+      a { color: #111; border: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ——— SVG Definitions ——— -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden;">
+  <symbol id="paisley" viewBox="0 0 200 320">
+    <!-- Outer shape -->
+    <path d="M100,25 C58,25 22,62 22,118 C22,190 68,255 100,298 C132,255 178,190 178,118 C178,62 142,25 100,25Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    <!-- Curl tip -->
+    <path d="M100,25 C114,8 142,16 132,44 C126,60 108,52 100,60" fill="none" stroke="currentColor" stroke-width="1.2"/>
+    <!-- Inner shape -->
+    <path d="M100,62 C72,62 48,84 48,122 C48,172 78,222 100,256 C122,222 152,172 152,122 C152,84 128,62 100,62Z" fill="none" stroke="currentColor" stroke-width="0.8"/>
+    <!-- Center details -->
+    <circle cx="100" cy="92" r="6" fill="none" stroke="currentColor" stroke-width="0.6"/>
+    <circle cx="100" cy="92" r="2.5" fill="currentColor" opacity="0.5"/>
+    <!-- Branching curves -->
+    <path d="M100,102 C120,108 130,124 126,148" fill="none" stroke="currentColor" stroke-width="0.6"/>
+    <path d="M100,102 C80,108 70,124 74,148" fill="none" stroke="currentColor" stroke-width="0.6"/>
+    <path d="M100,135 C114,140 120,152 117,168" fill="none" stroke="currentColor" stroke-width="0.5"/>
+    <path d="M100,135 C86,140 80,152 83,168" fill="none" stroke="currentColor" stroke-width="0.5"/>
+    <path d="M100,165 C110,168 114,178 112,190" fill="none" stroke="currentColor" stroke-width="0.5"/>
+    <path d="M100,165 C90,168 86,178 88,190" fill="none" stroke="currentColor" stroke-width="0.5"/>
+    <!-- Spine dots -->
+    <circle cx="100" cy="120" r="2" fill="currentColor" opacity="0.4"/>
+    <circle cx="100" cy="150" r="1.5" fill="currentColor" opacity="0.3"/>
+    <circle cx="100" cy="178" r="1.2" fill="currentColor" opacity="0.25"/>
+    <circle cx="100" cy="200" r="1" fill="currentColor" opacity="0.2"/>
+  </symbol>
+</svg>
+
+<!-- ——— Noise Overlay ——— -->
+<svg class="noise-overlay" xmlns="http://www.w3.org/2000/svg">
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" stitchTiles="stitch"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>
+
+
+<!-- ══════════════════════════════════════ -->
+<!--                 HERO                  -->
+<!-- ══════════════════════════════════════ -->
+
+<section class="hero">
+  <svg class="paisley-deco paisley-hero-1"><use href="#paisley"/></svg>
+  <svg class="paisley-deco paisley-hero-2"><use href="#paisley"/></svg>
+
+  <div class="hero-content">
+    <h1 class="hero-name hero-enter">Shuchi Goyal<span class="period">.</span></h1>
+    <p class="hero-subtitle hero-enter hero-enter-delay-1">
+      Statistician <span class="dot">&middot;</span> Data Scientist
+    </p>
+    <nav class="hero-nav hero-enter hero-enter-delay-2">
+      <a href="#about">About</a><span class="sep">/</span><a href="#research">Research</a><span class="sep">/</span><a href="#papers">Papers</a><span class="sep">/</span><a href="#teaching">Teaching</a><span class="sep">/</span><a href="https://drive.google.com/file/d/12onkBAIDloPB7LZ57vuVEw_0tGNp7h97/view?usp=sharing" target="_blank">CV</a><span class="sep">/</span><a href="crafts-max.html">Crafts</a>
+    </nav>
+  </div>
+
+  <div class="scroll-hint hero-enter hero-enter-delay-3">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+      <path d="M7 10l5 5 5-5"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!--                ABOUT                  -->
+<!-- ══════════════════════════════════════ -->
+
+<section id="about" class="content-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2>About</h2>
+      <div class="ornament">
+        <span class="ornament-line right"></span>
+        <span class="ornament-diamond"></span>
+        <span class="ornament-line"></span>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="reveal reveal-delay-1">
+        <div class="about-photo-wrap">
+          <img src="images/fountain.jpg" alt="Shuchi Goyal">
+        </div>
+        <div class="photo-caption">What I look like in low-resolution :]</div>
+      </div>
+
+      <div class="about-text reveal reveal-delay-2">
+        <p><span class="greeting">Hi, I'm Shuchi!</span></p>
+
+        <p>I earned my Ph.D. in statistics at the University of California, Los Angeles in September 2023. I am broadly interested in statistical methodology and applications in social sciences research, with a focus on model selection and network analysis. My dissertation work, advised by <a href="http://www.stat.ucla.edu/~handcock/">Dr. Mark S. Handcock</a>, focuses on two-sided matching processes in social networks. I recently completed a year-long traineeship with the U.S. Department of State as a statistical methodologist. For the past two summers I have also worked as a research intern for Facebook's infrastructure organization, and I am an affiliate of the <a href="https://ccpr.ucla.edu/">California Center for Population Research.</a></p>
+
+        <p>Through computational social sciences research, I aim to study relationship dynamics and family outcomes within hidden populations. This includes studying the migration patterns of minority groups or the spread of addiction in isolated communities. <strong>Ultimately, I hope to use this knowledge to help make technology and educational resources more accessible and useful to diverse populations.</strong></p>
+
+        <p>I graduated from the University of Georgia in 2018 with a B.S. in statistics and a B.A. in economics, along with a history minor and a data science certificate. At UGA, I had the privilege of being supported by the <a href="https://honors.uga.edu/c_s/scholarships/f_f/foundation_fellows.html">Foundation Fellowship</a>.</p>
+
+        <div class="aside-block">
+          Other things that make me happy: all types of puzzles (word, logic, jigsaw), women's advocacy, Georgia football, singing, and fixed-width fonts.
+        </div>
+
+        <div class="contact-block">
+          <a href="mailto:sgoyal25@ucla.edu">sgoyal25 [at] ucla.edu</a><span class="sep">/</span><br class="mobile-break"><a href="https://github.com/sgoyal25" target="_blank">github.com/sgoyal25</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!--              RESEARCH                 -->
+<!-- ══════════════════════════════════════ -->
+
+<section id="research" class="content-section" style="position:relative;">
+  <svg class="paisley-deco paisley-mid"><use href="#paisley"/></svg>
+
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2>Research</h2>
+      <div class="ornament">
+        <span class="ornament-line right"></span>
+        <span class="ornament-diamond"></span>
+        <span class="ornament-line"></span>
+      </div>
+    </div>
+
+    <div class="research-item reveal reveal-delay-1">
+      <h3>Revealed preferences modeling</h3>
+      <ul>
+        <li>Propose model which derives latent personal preferences for partners separably from availability</li>
+        <li>Apply model to two-sided matching problems (i.e. marriage, medical residency programs, employment)</li>
+        <li>Run simulation studies showing consistent accuracy and precision of preference parameter estimates</li>
+      </ul>
+    </div>
+
+    <div class="research-item reveal reveal-delay-2">
+      <h3>Missing data analysis in public health surveys</h3>
+      <ul>
+        <li>Consult for <a href="http://www.apahcare.com/">APA Health CARE</a> initiative investigating public health outcomes for minority Americans</li>
+        <li>Conduct exploratory data analysis to determine collinearity between various SES characteristics</li>
+        <li>Determine and apply appropriate multiple imputation methodology for missing data</li>
+        <li>Mitigate effects of collinearity among variables when fitting logistic regression model</li>
+      </ul>
+      <div class="research-figure">
+        <img src="images/APA_corr.png" alt="Correlation matrix of demographic characteristics">
+        <div class="figure-caption">Correlation matrix of demographic characteristics (made with ggplot2)</div>
+      </div>
+    </div>
+
+    <div class="research-item reveal reveal-delay-3">
+      <h3>Robust small area estimation for mixed populations</h3>
+      <ul>
+        <li>Proposed re-parametrized model for small area estimation, using hierarchical Bayes approach</li>
+        <li>Applied model to estimate agricultural production in Iowa counties given limited sample sizes</li>
+        <li>Demonstrated that proposed model produced narrower confidence intervals</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!--               PAPERS                  -->
+<!-- ══════════════════════════════════════ -->
+
+<section id="papers" class="content-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2>Papers</h2>
+      <div class="ornament">
+        <span class="ornament-line right"></span>
+        <span class="ornament-diamond"></span>
+        <span class="ornament-line"></span>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-1">
+      <div class="paper">
+        <span class="me">Goyal, S.;</span> Handcock, M.S.; Jackson, H.M.; and Rendall, M.S. (2021), A Practical RPM for Separating Preferences and Availability Effects in Marriage Formation, <em>Submitted</em>. <a href="http://papers.ccpr.ucla.edu/index.php/pwp/article/view/1244/" target="_blank">[Link]</a>
+      </div>
+
+      <div class="paper">
+        Rendall, M.S.; Jackson, H.M.; <span class="me">Goyal, S.</span>; Handcock, M.S.; Weden, M.M.; Zvavitch, P. (2021), Estimation, Simulation, and Validation of a Two-sex Model of Intergenerational Reproduction of Education, <em>Submitted</em>. <a href="https://www.popcenter.umd.edu/research/working-papers/papers/pwp-mprc-2021-004/view" target="_blank">[Link]</a>
+      </div>
+
+      <div class="paper">
+        Dhanjani, S.; Yang, H.H.; <span class="me">Goyal, S.</span>; Zhang, K.; Gee, G.; Cowgill, B. (2021) Trends in Healthcare Access Disparities Among Asian and Pacific Islander Health Fair Participants in Los Angeles, 2011-2019, <em>Accepted, Public Health Reports.</em>
+      </div>
+
+      <div class="paper">
+        <span class="me">Goyal, S.;</span> Datta, G.S.; &amp; Mandal, A. (2020) A Hierarchical Bayes Unit-Level Small Area Estimation Model for Normal Mixture Populations. <em>Sankhya B</em>. <a href="https://rdcu.be/b2FCo" target="_blank">[Link]</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!--              TEACHING                 -->
+<!-- ══════════════════════════════════════ -->
+
+<section id="teaching" class="content-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <h2>Teaching</h2>
+      <div class="ornament">
+        <span class="ornament-line right"></span>
+        <span class="ornament-diamond"></span>
+        <span class="ornament-line"></span>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-1">
+      <div class="teaching-role">Teaching Assistant</div>
+      <div class="teaching-item">
+        <div class="course">STATS 13: Introduction to Statistical Methods for Life and Health Sciences</div>
+        <div class="topics">Hypothesis testing, confidence intervals, interpretation of data, statistical inference and ANOVA; implementation in R</div>
+      </div>
+
+      <div class="teaching-role">Tutor</div>
+      <div class="teaching-item">
+        <div class="course">STATS 100A: Introduction to Probability Theory</div>
+        <div class="topics">Central limit theorem, mean and variance/covariance</div>
+      </div>
+      <div class="teaching-item">
+        <div class="course">STATS 100B: Introduction to Mathematical Statistics</div>
+        <div class="topics">Probability distributions, random vectors, parameter estimation, properties of estimators, optimizing statistical tests</div>
+      </div>
+      <div class="teaching-item">
+        <div class="course">STATS 102A: Introduction to Computational Statistics in R</div>
+        <div class="topics">Data structures, object-oriented programming in R, data visualization, numerical optimization, bootstrapping</div>
+      </div>
+
+      <div class="teaching-role">Resources</div>
+      <a class="resources-link" href="docs/Hypothesis Testing and CI for means and proportions_topost.pdf">Introduction to Statistics: Choosing a hypothesis test</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════ -->
+<!--               FOOTER                  -->
+<!-- ══════════════════════════════════════ -->
+
+<footer>
+  <svg class="paisley-deco paisley-footer"><use href="#paisley"/></svg>
+
+  <div class="footer-ornament">
+    <span class="ornament-line right"></span>
+    <span class="ornament-diamond"></span>
+    <span class="ornament-line"></span>
+  </div>
+
+  <div class="footer-content">
+    &copy; 2018<script>new Date().getFullYear()>2018&&document.write("\u2013"+new Date().getFullYear());</script>, Shuchi Goyal
+  </div>
+
+  <div class="footer-icons">
+    <a href="https://www.linkedin.com/in/shuchigoyal/" target="_blank" aria-label="LinkedIn">
+      <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="https://github.com/sgoyal25" target="_blank" aria-label="GitHub">
+      <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+  </div>
+</footer>
+
+
+<!-- ——— Scroll Reveal ——— -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        var target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
